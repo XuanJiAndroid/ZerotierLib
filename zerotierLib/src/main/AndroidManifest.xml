@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.kaaass.zerotierfix">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application>
+        <service
+            android:name=".service.ZeroTierOneService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:exported="true"
+            android:name=".ui.NetworkListActivity">
+
+        </activity>
+        <activity
+            android:name=".ui.JoinNetworkActivity"
+             />
+        <activity
+            android:name=".ui.PrefsActivity"
+             />
+        <activity
+            android:name=".ui.NetworkDetailActivity"
+             />
+        <activity
+            android:name=".ui.MoonOrbitActivity"
+             />
+        <activity
+            android:name=".ui.PeerListActivity"
+             />
+
+        <receiver
+            android:name=".service.StartupReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
